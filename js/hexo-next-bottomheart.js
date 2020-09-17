@@ -1,2 +1,59 @@
-var x = document.getElementById("bottomheart");
-!function(e,t,a){function n(){c(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"),o(),r()}function r(){for(var e=0;e<d.length;e++)d[e].alpha<=0?(t.body.removeChild(d[e].el),d.splice(e,1)):(d[e].y--,d[e].scale+=.004,d[e].alpha-=.013,d[e].el.style.cssText="left:"+d[e].x+"px;top:"+d[e].y+"px;opacity:"+d[e].alpha+";transform:scale("+d[e].scale+","+d[e].scale+") rotate(45deg);background:"+d[e].color+";z-index:99999");requestAnimationFrame(r)}function o(){var t="function"==typeof e.onclick&&e.onclick;e.onclick=function(e){t&&t(),i(e)}}function i(e){var a=t.createElement("div");a.className="heart",d.push({el:a,x:e.clientX-5,y:e.clientY-5,scale:1,alpha:1,color:s()}),t.body.appendChild(a)}function c(e){var a=t.createElement("style");a.type="text/css";try{a.appendChild(t.createTextNode(e))}catch(t){a.styleSheet.cssText=e}t.getElementsByTagName("head")[0].appendChild(a)}function s(){return"rgb("+~~(255*Math.random())+","+~~(255*Math.random())+","+~~(255*Math.random())+")"}var d=[];e.requestAnimationFrame=function(){return e.requestAnimationFrame||e.webkitRequestAnimationFrame||e.mozRequestAnimationFrame||e.oRequestAnimationFrame||e.msRequestAnimationFrame||function(e){setTimeout(e,1e3/60)}}(),n()}(x,document);
+var element = document.getElementById("bottomheart");
+! function (element, document) {
+  function setup() {
+    setStyle(".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+    setClick();
+    animation();
+  }
+
+  function animation() {
+    for (var e = 0; e < heartlist.length; e++)
+        heartlist[e].alpha <= 0 ? (document.body.removeChild(heartlist[e].el), heartlist.splice(e, 1)) 
+        : (heartlist[e].y--, heartlist[e].scale += .006, heartlist[e].alpha -= .010, heartlist[e].el.style.cssText = "left:" + heartlist[e].x + "px;top:" + heartlist[e].y + "px;opacity:" + heartlist[e].alpha + ";transform:scale(" + heartlist[e].scale + "," + heartlist[e].scale + ") rotate(45deg);background:" + heartlist[e].color + ";z-index:99999");
+    requestAnimationFrame(animation)
+  }
+
+  function setClick() {
+    var t = "function" == typeof element.onclick && element.onclick;
+    element.onclick = function (element) {
+      t && t(), createHeart(element)
+    }
+  }
+
+  function createHeart(element) {
+    var heart_div = document.createElement("div");
+    heart_div.className = "heart";
+    heartlist.push({
+      el: heart_div,
+      x: element.clientX - 5 - 8*(Math.random() - 0.5),
+      y: element.clientY - 3,
+      scale: 1,
+      alpha: 1,
+      color: getColor()
+    });
+    document.body.appendChild(heart_div)
+  }
+
+  function setStyle(stylestring) {
+    var heart_style = document.createElement("style");
+    heart_style.type = "text/css";
+    try {
+      heart_style.appendChild(document.createTextNode(stylestring))
+    } catch (event) {
+      heart_style.styleSheet.cssText = stylestring
+    }
+    document.getElementsByTagName("head")[0].appendChild(heart_style)
+  }
+
+  function getColor() {
+    return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+  }
+
+  var heartlist = [];
+  element.requestAnimationFrame = function () {
+    return element.requestAnimationFrame || element.webkitRequestAnimationFrame || element.mozRequestAnimationFrame || element.oRequestAnimationFrame || element.msRequestAnimationFrame || function (element) {
+      setTimeout(element, 1e3 / 60)
+    }
+  }();
+  setup();
+}(element, document);
