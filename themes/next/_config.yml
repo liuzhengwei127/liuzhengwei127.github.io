@@ -995,3 +995,6 @@ vendors:
 css: css
 js: js
 images: images
+
+# mouse click effects: fireworks | explosion | love | text
+cursor_effect: text
