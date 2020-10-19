@@ -51,8 +51,9 @@
   {%- endif %}
   {% include '_third-party/math/index.swig' %}
   {% include '_third-party/quicklink.swig' %}
+  <script src="/js/jquery-3.5.1.min.js"></script>
   {% include '_custom/custom.swig' %}
-
+  
   {{- next_inject('bodyEnd') }}
   {%- if theme.pjax %}
     </div>

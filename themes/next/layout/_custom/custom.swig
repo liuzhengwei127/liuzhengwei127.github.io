@@ -8,6 +8,6 @@
 {% elseif theme.cursor_effect == "love" %}
   <script async src="/js/cursor/love.min.js"></script>
 {% elseif theme.cursor_effect == "text" %}
-  <script async src="/js/jquery-3.5.1.min.js"></script>
   <script async src="/js/cursor/text.js"></script>
 {% endif %}
+
