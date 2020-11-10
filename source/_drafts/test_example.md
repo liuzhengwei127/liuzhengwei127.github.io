@@ -5,6 +5,8 @@ title: test
 # Markdown
 A markdown example shows how to write a markdown file. This document integrates core syntax and extensions (GMF).
 
+<!--more-->
+
 - [Markdown](#markdown)
   - [Block Elements](#block-elements)
     - [Paragraphs and Line Breaks](#paragraphs-and-line-breaks)
