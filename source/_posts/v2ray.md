@@ -9,6 +9,7 @@ categories:
 
 作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行~~姿势~~知识学习🐶
 本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网
+![youtube](/images/youtube.png)
 
 <!--more-->
 
@@ -41,7 +42,7 @@ windows用户可以用各种工具(我用的是XShell)
 
     $ bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
 看到如下界面应该安装成功了
-![v2ray_installscript](/images/v2ray_installscript)
+![v2ray_installscript](/images/v2ray_installscript.png)
 
 #### 配置v2ray文件
 用vim打开v2ray的配置文件config.json
@@ -90,7 +91,7 @@ https://www.v2fly.org/awesome/tools.html
 下载地址：https://github.com/yanue/V2rayU/releases
 #### 服务器设置
 打开V2rayU的服务器设置
-![v2rayu](/images/V2rayU.png)
+![v2rayU](/images/V2rayU.png)
 服务器列表中新建一个服务器配置
 选择手动模式
 ##### addrss
@@ -100,14 +101,24 @@ https://www.v2fly.org/awesome/tools.html
 ##### id
 输入之前配置文件config.json中写入的id
 ##### alterId
-记得把alterId设置为0
-![v2rayu_config](/images/V2rayU_config.png)
+alterId设置为0
+![v2rayU_config](/images/V2rayU_config.png)
 点击确定后即可连接开始科学上网了！
 ### windows端
 #### 下载客户端
 使用V2rayN客户端
 下载地址：https://github.com/2dust/v2rayN/releases
 
-#### TO BE DONE
-
+#### 服务器设置
+打开V2rayN，选择“添加[VMess]服务器”
+![v2rayN](/images/V2rayN.png)
+##### addrss
+输入VPS服务器的IP地址
+##### port
+冒号后面输入之前配置文件config.json中写入的port
+##### id
+输入之前配置文件config.json中写入的id
+##### alterId
+alterId设置为0
+![v2rayN_config](/images/V2rayN_config.png)
 点击确定后即可连接开始科学上网了！
