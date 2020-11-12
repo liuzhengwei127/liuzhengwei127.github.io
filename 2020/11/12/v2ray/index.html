@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行姿势知识学习🐶本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向小白的v2ray搭建指南，科学上网">
+<meta property="og:url" content="http://example.com/2020/11/12/v2ray/index.html">
+<meta property="og:site_name" content="五柳寄书">
+<meta property="og:description" content="作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行姿势知识学习🐶本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/youtube.png">
+<meta property="og:image" content="http://example.com/images/vultr.png">
+<meta property="og:image" content="http://example.com/images/v2ray_installscript.png">
+<meta property="og:image" content="http://example.com/images/V2rayU.png">
+<meta property="og:image" content="http://example.com/images/V2rayU_config.png">
+<meta property="og:image" content="http://example.com/images/V2rayN.png">
+<meta property="og:image" content="http://example.com/images/V2rayN_config.png">
+<meta property="article:published_time" content="2020-11-12T08:07:25.529Z">
+<meta property="article:modified_time" content="2020-11-12T08:49:54.038Z">
+<meta property="article:author" content="五柳寄书">
+<meta property="article:tag" content="v2ray">
+<meta property="article:tag" content="科学上网">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/youtube.png">
+
+<link rel="canonical" href="http://example.com/2020/11/12/v2ray/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>面向小白的v2ray搭建指南，科学上网 | 五柳寄书</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<link rel="alternate" href="/atom.xml" title="五柳寄书" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">五柳寄书</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/11/12/v2ray/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="五柳寄书">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="五柳寄书">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          面向小白的v2ray搭建指南，科学上网
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-12 16:07:25 / 修改时间：16:49:54" itemprop="dateCreated datePublished" datetime="2020-11-12T16:07:25+08:00">2020-11-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%86%85%E5%8A%9F/" itemprop="url" rel="index"><span itemprop="name">内功</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行<del>姿势</del>知识学习🐶<br>本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网<br><img src="/images/youtube.png" alt="youtube"></p>
+<a id="more"></a>
+
+<h2 id="服务端（远端服务器）"><a href="#服务端（远端服务器）" class="headerlink" title="服务端（远端服务器）"></a>服务端（远端服务器）</h2><h3 id="获取一个境外VPS"><a href="#获取一个境外VPS" class="headerlink" title="获取一个境外VPS"></a>获取一个境外VPS</h3><p>VPS(Virtual Private Server)。获取VPS的意义在于作为我们的跳板，将我们的流量封装起来，不至于被拦截。</p>
+<h4 id="vultr"><a href="#vultr" class="headerlink" title="vultr"></a>vultr</h4><p>选用的是vultr公司的服务器服务。 <a target="_blank" rel="noopener" href="https://www.vultr.com/">https://www.vultr.com/</a><br>优点如下：<br>1.拥有国外节点服务器且相对稳定，适合做跳板（目前用了几个月还没被墙）。<br>2.新用户有活动。我第一次注册的时候充值10刀送50刀。相当于10刀能够嫖一年的服务器服务。<br>（如果有其他更划算的国外服务器服务也可考虑</p>
+<h5 id="节点-Server-Location"><a href="#节点-Server-Location" class="headerlink" title="节点(Server Location)"></a>节点(Server Location)</h5><p>建议选用新加坡/韩国</p>
+<h5 id="系统-Server-Type"><a href="#系统-Server-Type" class="headerlink" title="系统(Server Type)"></a>系统(Server Type)</h5><p>Ubuntu 18.04及以上</p>
+<h5 id="服务器配置-Server-Size"><a href="#服务器配置-Server-Size" class="headerlink" title="服务器配置(Server Size)"></a>服务器配置(Server Size)</h5><p>一般最便宜的价格配置都够用了，我用的是5刀/month<br><img src="/images/vultr.png" alt="vultr"></p>
+<h3 id="远程连接到服务器"><a href="#远程连接到服务器" class="headerlink" title="远程连接到服务器"></a>远程连接到服务器</h3><p>mac用户可以直接通过ssh连接到服务器<br>windows用户可以用各种工具(我用的是XShell)</p>
+<h3 id="部署v2ray服务"><a href="#部署v2ray服务" class="headerlink" title="部署v2ray服务"></a>部署v2ray服务</h3><p>用ssh连接到VPS后即可开始部署v2ray服务<br>由于原来很多教程使用的脚本<a target="_blank" rel="noopener" href="https://install.direct/go.sh">https://install.direct/go.sh</a> 已被停用</p>
+<h4 id="在服务器上安装v2ray"><a href="#在服务器上安装v2ray" class="headerlink" title="在服务器上安装v2ray"></a>在服务器上安装v2ray</h4><p>在命令行里输入以下指令安装v2ray</p>
+<pre><code>$ bash &lt;(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)</code></pre>
+<p>看到如下界面应该安装成功了<br><img src="/images/v2ray_installscript.png" alt="v2ray_installscript"></p>
+<h4 id="配置v2ray文件"><a href="#配置v2ray文件" class="headerlink" title="配置v2ray文件"></a>配置v2ray文件</h4><p>用vim打开v2ray的配置文件config.json</p>
+<pre><code>$ vi /usr/local/etc/v2ray/config.json</code></pre>
+<p>打开后里面是空的，修改为以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;inbounds&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;port&quot;: 10086, &#x2F;&#x2F;服务器监听端口</span><br><span class="line">            &quot;protocol&quot;: &quot;vmess&quot;,</span><br><span class="line">            &quot;settings&quot;: &#123;</span><br><span class="line">                &quot;clients&quot;: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        &quot;id&quot;: &quot;5ac211e0-5183-454b-9521-836db728310b&quot; &#x2F;&#x2F;唯一标识符uuid</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;outbounds&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;protocol&quot;: &quot;freedom&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意⚠️：port与id均为自定义的（id不建议使用我这里给定的值）</p>
+<h5 id="port"><a href="#port" class="headerlink" title="port"></a>port</h5><p>建议使用5位数的端口，不易与系统本身使用的端口冲突</p>
+<h5 id="id"><a href="#id" class="headerlink" title="id"></a>id</h5><p>uuid随机生成器:<br><a target="_blank" rel="noopener" href="https://www.uuidgenerator.net/">https://www.uuidgenerator.net/</a><br><a target="_blank" rel="noopener" href="https://www.v2fly.org/awesome/tools.html">https://www.v2fly.org/awesome/tools.html</a></p>
+<h4 id="启动v2ray服务"><a href="#启动v2ray服务" class="headerlink" title="启动v2ray服务"></a>启动v2ray服务</h4><p>在shell里输入</p>
+<pre><code>systemctl start v2ray
+systemctl enable v2ray</code></pre>
+<h2 id="客户端（本机）"><a href="#客户端（本机）" class="headerlink" title="客户端（本机）"></a>客户端（本机）</h2><h3 id="mac端"><a href="#mac端" class="headerlink" title="mac端"></a>mac端</h3><h4 id="下载客户端"><a href="#下载客户端" class="headerlink" title="下载客户端"></a>下载客户端</h4><p>使用V2rayU客户端<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/yanue/V2rayU/releases">https://github.com/yanue/V2rayU/releases</a></p>
+<h4 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h4><p>打开V2rayU的服务器设置<br><img src="/images/V2rayU.png" alt="v2rayU"><br>服务器列表中新建一个服务器配置<br>选择手动模式</p>
+<h5 id="addrss"><a href="#addrss" class="headerlink" title="addrss"></a>addrss</h5><p>输入VPS服务器的IP地址</p>
+<h5 id="port-1"><a href="#port-1" class="headerlink" title="port"></a>port</h5><p>冒号后面输入之前配置文件config.json中写入的port</p>
+<h5 id="id-1"><a href="#id-1" class="headerlink" title="id"></a>id</h5><p>输入之前配置文件config.json中写入的id</p>
+<h5 id="alterId"><a href="#alterId" class="headerlink" title="alterId"></a>alterId</h5><p>alterId设置为0<br><img src="/images/V2rayU_config.png" alt="v2rayU_config"><br>点击确定后即可连接开始科学上网了！</p>
+<h3 id="windows端"><a href="#windows端" class="headerlink" title="windows端"></a>windows端</h3><h4 id="下载客户端-1"><a href="#下载客户端-1" class="headerlink" title="下载客户端"></a>下载客户端</h4><p>使用V2rayN客户端<br>下载地址：<a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a></p>
+<h4 id="服务器设置-1"><a href="#服务器设置-1" class="headerlink" title="服务器设置"></a>服务器设置</h4><p>打开V2rayN，选择“添加[VMess]服务器”<br><img src="/images/V2rayN.png" alt="v2rayN"></p>
+<h5 id="addrss-1"><a href="#addrss-1" class="headerlink" title="addrss"></a>addrss</h5><p>输入VPS服务器的IP地址</p>
+<h5 id="port-2"><a href="#port-2" class="headerlink" title="port"></a>port</h5><p>冒号后面输入之前配置文件config.json中写入的port</p>
+<h5 id="id-2"><a href="#id-2" class="headerlink" title="id"></a>id</h5><p>输入之前配置文件config.json中写入的id</p>
+<h5 id="alterId-1"><a href="#alterId-1" class="headerlink" title="alterId"></a>alterId</h5><p>alterId设置为0<br><img src="/images/V2rayN_config.png" alt="v2rayN_config"><br>点击确定后即可连接开始科学上网了！</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/v2ray/" rel="tag"># v2ray</a>
+              <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" rel="tag"># 科学上网</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/29/about-graduation/" rel="prev" title="江湖再见">
+      <i class="fa fa-chevron-left"></i> 江湖再见
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%EF%BC%88%E8%BF%9C%E7%AB%AF%E6%9C%8D%E5%8A%A1%E5%99%A8%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">服务端（远端服务器）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E4%B8%80%E4%B8%AA%E5%A2%83%E5%A4%96VPS"><span class="nav-number">1.1.</span> <span class="nav-text">获取一个境外VPS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vultr"><span class="nav-number">1.1.1.</span> <span class="nav-text">vultr</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%8A%82%E7%82%B9-Server-Location"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">节点(Server Location)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F-Server-Type"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">系统(Server Type)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE-Server-Size"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">服务器配置(Server Size)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">1.2.</span> <span class="nav-text">远程连接到服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2v2ray%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.3.</span> <span class="nav-text">部署v2ray服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B8%8A%E5%AE%89%E8%A3%85v2ray"><span class="nav-number">1.3.1.</span> <span class="nav-text">在服务器上安装v2ray</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEv2ray%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.2.</span> <span class="nav-text">配置v2ray文件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#port"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">port</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#id"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">id</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8v2ray%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.3.3.</span> <span class="nav-text">启动v2ray服务</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E6%9C%AC%E6%9C%BA%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">客户端（本机）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#mac%E7%AB%AF"><span class="nav-number">2.1.</span> <span class="nav-text">mac端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">2.1.1.</span> <span class="nav-text">下载客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.1.2.</span> <span class="nav-text">服务器设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#addrss"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">addrss</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#port-1"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">port</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#id-1"><span class="nav-number">2.1.2.3.</span> <span class="nav-text">id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#alterId"><span class="nav-number">2.1.2.4.</span> <span class="nav-text">alterId</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#windows%E7%AB%AF"><span class="nav-number">2.2.</span> <span class="nav-text">windows端</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%A2%E6%88%B7%E7%AB%AF-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">下载客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">服务器设置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#addrss-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">addrss</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#port-2"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">port</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#id-2"><span class="nav-number">2.2.2.3.</span> <span class="nav-text">id</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#alterId-1"><span class="nav-number">2.2.2.4.</span> <span class="nav-text">alterId</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">五柳寄书</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuzhengwei127" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuzhengwei127" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:liuzhengwei127@163.com" title="E-Mail → mailto:liuzhengwei127@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">五柳寄书</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  <script src="/js/jquery-3.5.1.min.js"></script>
+  
+
+  <script async src="/js/cursor/text.js"></script>
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":200,"height":360,"hOffset":20,"vOffset":0},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>

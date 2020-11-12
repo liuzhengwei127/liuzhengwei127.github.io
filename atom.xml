@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>五柳寄书</title>
+  <icon>http://example.com/icon.png</icon>
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-11-12T08:49:54.038Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>五柳寄书</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面向小白的v2ray搭建指南，科学上网</title>
+    <link href="http://example.com/2020/11/12/v2ray/"/>
+    <id>http://example.com/2020/11/12/v2ray/</id>
+    <published>2020-11-12T08:07:25.529Z</published>
+    <updated>2020-11-12T08:49:54.038Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行&lt;del&gt;姿势&lt;/del&gt;知识学习🐶&lt;br&gt;本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网&lt;br&gt;&lt;img src=&quot;/images/youtube.png&quot; alt=&quot;youtube&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="内功" scheme="http://example.com/categories/%E5%86%85%E5%8A%9F/"/>
+    
+    
+    <category term="v2ray" scheme="http://example.com/tags/v2ray/"/>
+    
+    <category term="科学上网" scheme="http://example.com/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>江湖再见</title>
+    <link href="http://example.com/2020/10/29/about-graduation/"/>
+    <id>http://example.com/2020/10/29/about-graduation/</id>
+    <published>2020-10-29T15:44:39.000Z</published>
+    <updated>2020-11-12T08:47:39.381Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;“我不去想，是否能够成功，既然选择了远方，便只顾风雨兼程。”&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;几乎所有人，包括我自己，都以为我保研了。事实上，我也确实有资格拿到推免名额。只是真的保研落到头上的时候，事情并没有按我想象的轨迹发展。&lt;/p&gt;
+&lt;iframe 
+    frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; 
+    marginheight=&quot;0&quot; width=330 height=86 
+    src=&quot;//music.163.com/outchain/player?type=2&amp;id=1414783972&amp;auto=0&amp;height=66&quot;&gt;
+&lt;/iframe&gt;</summary>
+    
+    
+    
+    <category term="碎碎念" scheme="http://example.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+    <category term="人生" scheme="http://example.com/tags/%E4%BA%BA%E7%94%9F/"/>
+    
+    <category term="选择" scheme="http://example.com/tags/%E9%80%89%E6%8B%A9/"/>
+    
+    <category term="毕业" scheme="http://example.com/tags/%E6%AF%95%E4%B8%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>序/Intro</title>
+    <link href="http://example.com/2020/10/28/hello-world/"/>
+    <id>http://example.com/2020/10/28/hello-world/</id>
+    <published>2020-10-28T13:29:24.000Z</published>
+    <updated>2020-11-12T08:07:25.529Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Hello World&lt;br&gt;Hello Hexo&lt;br&gt;Hello Everyone&lt;/p&gt;
+&lt;iframe 
+    frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; 
+    marginheight=&quot;0&quot; width=330</summary>
+        
+      
+    
+    
+    
+    <category term="碎碎念" scheme="http://example.com/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+  </entry>
+  
+</feed>
