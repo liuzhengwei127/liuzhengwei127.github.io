@@ -15,7 +15,7 @@ categories:
 
 ## 服务端（远端服务器）
 ### 获取一个境外VPS
-VPS(Virtual Private Server)。获取VPS的意义在于作为我们的跳板，将我们的流量封装起来，不至于被拦截。
+VPS(Virtual Private Server)。获取VPS的意义在于作为我们的跳板，将我们的流量封装起来。
 #### vultr 
 选用的是vultr公司的服务器服务。 https://www.vultr.com/
 优点如下：
@@ -92,8 +92,7 @@ https://www.v2fly.org/awesome/tools.html
 #### 服务器设置
 打开V2rayU的服务器设置
 ![v2rayU](/images/V2rayU.png)
-服务器列表中新建一个服务器配置
-选择手动模式
+服务器列表中新建一个服务器配置，并选择手动模式
 ##### addrss
 输入VPS服务器的IP地址
 ##### port
