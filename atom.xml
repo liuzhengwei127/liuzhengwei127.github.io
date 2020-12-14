@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-11-12T08:49:54.038Z</updated>
+  <updated>2020-12-14T10:12:13.189Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,14 +17,58 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>BUG:cuda别用cpu的math库</title>
+    <link href="http://example.com/2020/12/09/cudabug/"/>
+    <id>http://example.com/2020/12/09/cudabug/</id>
+    <published>2020-12-09T14:21:22.000Z</published>
+    <updated>2020-12-14T10:12:13.189Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;每天0打开VS，右下角都有小红圈提示我要更新VS。手贱点了更新，更新完CUDA文件编译不了了。一直以为是更新完CUDA配置不对，重装VS+重装CUDA都没用。排了两天雷，最后发现是一个调用的数学库函数的问题。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="CUDA" scheme="http://example.com/categories/CUDA/"/>
+    
+    
+    <category term="bug" scheme="http://example.com/tags/bug/"/>
+    
+    <category term="CUDA" scheme="http://example.com/tags/CUDA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>论文中奇怪的倒三角们</title>
+    <link href="http://example.com/2020/11/18/inverted-triangles/"/>
+    <id>http://example.com/2020/11/18/inverted-triangles/</id>
+    <published>2020-11-18T14:27:01.000Z</published>
+    <updated>2020-12-14T09:52:23.141Z</updated>
+    
+    
+    <summary type="html">&lt;p&gt;最近在读siggraph里面关于流体的论文，涉及到数学推导的部分总是会有一些倒三角，实在是迷惑到我了，深感自己高数没有学好，正好最近实验室里讲流体课讲到了这块内容，找了些资料恶补一下。&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="数学" scheme="http://example.com/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+    <category term="论文" scheme="http://example.com/tags/%E8%AE%BA%E6%96%87/"/>
+    
+  </entry>
+  
+  <entry>
     <title>面向小白的v2ray搭建指南，科学上网</title>
     <link href="http://example.com/2020/11/12/v2ray/"/>
     <id>http://example.com/2020/11/12/v2ray/</id>
     <published>2020-11-12T08:07:25.529Z</published>
-    <updated>2020-11-12T08:49:54.038Z</updated>
+    <updated>2020-12-14T10:12:46.095Z</updated>
     
     
-    <summary type="html">&lt;p&gt;作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行&lt;del&gt;姿势&lt;/del&gt;知识学习🐶&lt;br&gt;本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网&lt;br&gt;&lt;img src=&quot;/images/youtube.png&quot; alt=&quot;youtube&quot;&gt;&lt;/p&gt;</summary>
+    <summary type="html">&lt;p&gt;作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行&lt;s&gt;姿势&lt;/s&gt;知识学习🐶&lt;br /&gt;
+本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网&lt;br /&gt;
+&lt;img src=&quot;/images/youtube.PNG&quot; alt=&quot;youtube&quot; /&gt;&lt;/p&gt;</summary>
     
     
     
