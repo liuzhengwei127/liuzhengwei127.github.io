@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://example.com/images/MSB3721.png">
 <meta property="og:image" content="http://example.com/images/MSB3721Example.png">
 <meta property="article:published_time" content="2020-12-09T14:21:22.000Z">
-<meta property="article:modified_time" content="2020-12-14T10:12:13.189Z">
+<meta property="article:modified_time" content="2020-12-14T10:20:40.135Z">
 <meta property="article:author" content="五柳寄书">
 <meta property="article:tag" content="bug">
 <meta property="article:tag" content="CUDA">
@@ -196,7 +196,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-14 18:12:13" itemprop="dateModified" datetime="2020-12-14T18:12:13+08:00">2020-12-14</time>
+                <time title="修改时间：2020-12-14 18:20:40" itemprop="dateModified" datetime="2020-12-14T18:20:40+08:00">2020-12-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,17 +221,9 @@
       
         <p>每天0打开VS，右下角都有小红圈提示我要更新VS。手贱点了更新，更新完CUDA文件编译不了了。一直以为是更新完CUDA配置不对，重装VS+重装CUDA都没用。排了两天雷，最后发现是一个调用的数学库函数的问题。</p>
 <a id="more"></a>
-<p>CUDA代码部分如下（修改前）</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">__device__</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">poly6Kernel</span><span class="params">(float3 r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> ret = <span class="number">0.0f</span>;</span><br><span class="line">	<span class="keyword">float</span> r1 = sqrtf(r.x * r.x + r.y * r.y + r.z * r.z);</span><br><span class="line">	<span class="keyword">float</span> h1 = params.sphRadius;</span><br><span class="line">	<span class="keyword">if</span> (r1 &gt; h1 || r1 &lt;= <span class="number">1e-6</span>)</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	<span class="keyword">float</span> r2 = r1 * r1;</span><br><span class="line">	<span class="keyword">float</span> h2 = h1 * h1;</span><br><span class="line"></span><br><span class="line">	ret = params.poly6Coff * <span class="built_in">pow</span>((h2 - r2), <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>报了一个MSB3721错误<br />
-<img src="/images/MSB3721.png" alt="MSB3721" /><br />
-这个错误其实是一个只要CUDA部分代码编译失败都会报的错误，只是一般这个MSB3721错误之前会给出更具体的错误，比如<br />
-<img src="/images/MSB3721Example.png" alt="MSB3721" /></p>
-<p>最后偶然发现是</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ret = params.poly6Coff * <span class="built_in">pow</span>((h2 - r2), <span class="number">3</span>);</span><br></pre></td></tr></table></figure>
-<p>这一行里面调用的pow函数的问题。<br />
-<code>pow()</code>函数是cpu上的math.h里面的函数，在GPU里当然是跑不了。<br />
-因此要用<code>powf()</code>替代，像本函数前面使用的<code>sqrtf()</code>一样。</p>
+<p>CUDA代码部分如下（修改前）<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">__device__</span><br><span class="line"><span class="function"><span class="keyword">float</span> <span class="title">poly6Kernel</span><span class="params">(float3 r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">float</span> ret = <span class="number">0.0f</span>;</span><br><span class="line">	<span class="keyword">float</span> r1 = sqrtf(r.x * r.x + r.y * r.y + r.z * r.z);</span><br><span class="line">	<span class="keyword">float</span> h1 = params.sphRadius;</span><br><span class="line">	<span class="keyword">if</span> (r1 &gt; h1 || r1 &lt;= <span class="number">1e-6</span>)</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	<span class="keyword">float</span> r2 = r1 * r1;</span><br><span class="line">	<span class="keyword">float</span> h2 = h1 * h1;</span><br><span class="line"></span><br><span class="line">	ret = params.poly6Coff * <span class="built_in">pow</span>((h2 - r2), <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>报了一个MSB3721错误<br><img src="/images/MSB3721.png" alt="MSB3721"><br>这个错误其实是一个只要CUDA部分代码编译失败都会报的错误，只是一般这个MSB3721错误之前会给出更具体的错误，比如<br><img src="/images/MSB3721Example.png" alt="MSB3721"></p>
+<p>最后偶然发现是<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ret = params.poly6Coff * <span class="built_in">pow</span>((h2 - r2), <span class="number">3</span>);</span><br></pre></td></tr></table></figure><br>这一行里面调用的pow函数的问题。<br>这里调用<code>pow()</code>的时候链接到了cpu上的math.h(cmath)里面的函数，在GPU里当然是跑不了。<br>因此要用<code>powf()</code>替代，像本函数前面使用的<code>sqrtf()</code>一样。</p>
 
     </div>
 
