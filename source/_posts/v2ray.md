@@ -9,7 +9,7 @@ categories:
 
 作为爱学习的三有青年，科学上网能够帮助我们google查阅资料，youtube观看学习视频，在p站进行~~姿势~~知识学习🐶
 本教程旨在帮助我们快速搭建属于自己的v2ray服务器来方便快速的科学上网
-![youtube](/images/youtube.png)
+![youtube](/images/youtube.PNG)
 
 <!--more-->
 
@@ -110,7 +110,7 @@ alterId设置为0
 
 #### 服务器设置
 打开V2rayN，选择“添加[VMess]服务器”
-![v2rayN](/images/V2rayN.png)
+![v2rayN](/images/V2rayN.PNG)
 ##### addrss
 输入VPS服务器的IP地址
 ##### port
@@ -119,5 +119,5 @@ alterId设置为0
 输入之前配置文件config.json中写入的id
 ##### alterId
 alterId设置为0
-![v2rayN_config](/images/V2rayN_config.png)
+![v2rayN_config](/images/V2rayN_config.PNG)
 点击确定后即可连接开始科学上网了！
