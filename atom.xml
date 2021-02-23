@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-05T13:14:29.689Z</updated>
+  <updated>2021-02-23T15:07:26.448Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,40 +21,24 @@
     <link href="http://example.com/2020/12/28/ShaderToy-Eye/"/>
     <id>http://example.com/2020/12/28/ShaderToy-Eye/</id>
     <published>2020-12-28T14:54:33.000Z</published>
-    <updated>2021-02-05T13:14:29.689Z</updated>
+    <updated>2021-02-23T15:07:26.448Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;基本思路&quot;&gt;&lt;a href=&quot;#基本思路&quot; class=&quot;headerlink&quot; title=&quot;基本思路&quot;&gt;&lt;/a&gt;基本思路&lt;/h2&gt;&lt;h3 id=&quot;FBM&quot;&gt;&lt;a href=&quot;#FBM&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;按照&lt;a href=&quot;https://www.youtube.com/watch?v=emjuqqyq_qc&quot;&gt;youtube上iq大神的教学&lt;/a&gt;，在unity上写的眼睛shader&lt;/p&gt;
+&lt;h2 id=&quot;效果&quot;&gt;&lt;a</summary>
         
       
     
     
     
     
-  </entry>
-  
-  <entry>
-    <title>BUG:cuda别用cpu的math库</title>
-    <link href="http://example.com/2020/12/09/cudabug/"/>
-    <id>http://example.com/2020/12/09/cudabug/</id>
-    <published>2020-12-09T14:21:22.000Z</published>
-    <updated>2020-12-14T10:24:01.373Z</updated>
+    <category term="shader" scheme="http://example.com/tags/shader/"/>
     
-    
-    <summary type="html">&lt;p&gt;每天打开VS，右下角都有小红圈提示我要更新VS。手贱点了更新，更新完CUDA文件编译不了了。一直以为是更新完CUDA配置不对，重装VS+重装CUDA都没用。排了两天雷，最后发现是一个调用的数学库函数的问题。&lt;/p&gt;</summary>
-    
-    
-    
-    <category term="CUDA" scheme="http://example.com/categories/CUDA/"/>
-    
-    
-    <category term="bug" scheme="http://example.com/tags/bug/"/>
-    
-    <category term="CUDA" scheme="http://example.com/tags/CUDA/"/>
+    <category term="eye" scheme="http://example.com/tags/eye/"/>
     
   </entry>
   
